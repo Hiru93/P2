@@ -14,8 +14,40 @@ Orario::Orario(int o, int m, int s) {
     }
 };
 
-int Orario::Ore() { return sec / 3600; }
+/**
+ * @brief Orario::Ore -- restituisce le ore
+ * @return int
+ */
+int Orario::Ore() const { return sec / 3600; }
 
-int Orario::Minuti() { return (sec / 60) % 60; }
+/**
+ * @brief Orario::Minuti -- restituisce i minuti
+ * @return int
+ */
+int Orario::Minuti() const { return (sec / 60) % 60; }
 
-int Orario::Secondi() { return sec % 60; }
+/**
+ * @brief Orario::Secondi -- restituisce i secondi
+ * @return int
+ */
+int Orario::Secondi() const { return sec % 60; }
+
+Orario Orario::UnOraPiuTardi() const {
+    Orario aux;
+    aux.sec = (sec + 3600) % 86400;
+    return aux;
+}
+
+void Orario::AvanzaUnOra() {
+    sec = (sec + 3600) % 86400;
+}
+
+Orario Orario::OraDiPranzo() {
+    return Orario(13);
+}
+
+Orario Orario::operator+(Orario o) {
+    Orario aux;
+    aux.sec = (sec + o.sec) % 86400;
+    return aux;
+}

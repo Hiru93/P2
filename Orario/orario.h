@@ -6,6 +6,36 @@ class Orario
 {
 public:
     /**
+     N.B.
+     Un campo dati statico può avere molteplici utilizzi (come ad esempio
+     tener traccia della quantità di istanze generate a partire da una determinata classe)
+
+     Inoltre, per poter accedere a questo campo dati, non è necessario specificare il namespace utilizzato
+     (quindi è possibile omettere NOMECLASSE::)
+
+     Un esempio è il seguente:
+     class C {
+     private:
+        int dato;
+     public:
+        static int cont;
+    };
+
+    int C::cont = 0;
+
+    C::C(int n) { cont++; dato = n; }
+
+    int main() {
+        C c1(1), c2(2);
+        cout << C::cont; <-- stamperà 2, in quanto sono sono stati inizializzati due oggetti
+    }
+     */
+    /**
+     * @brief operator + -- Overload dell'operatore di somma
+     * @return
+     */
+    Orario operator+(Orario);
+    /**
      * @brief Orario
      * Cosi facendo, ridefinisco il costruttore di default
      * con un costruttore di default custom.
@@ -28,17 +58,30 @@ public:
      * @brief Ore - Selettore campo Ore
      * @return int
      */
-    int Ore();
+    int Ore() const;
     /**
      * @brief Minuti - Selettore campo Minuti
      * @return int
      */
-    int Minuti();
+    int Minuti() const;
     /**
      * @brief Secondi - Selettore campo Secondi
      * @return int
      */
-    int Secondi();
+    int Secondi() const;
+
+    Orario UnOraPiuTardi() const;
+
+    void AvanzaUnOra();
+
+    /**
+     * @brief OraDiPranzo
+     * Essendo un metodo statico, e quindi privo di oggetto di invocazione, non ha
+     * bisogno di essere marchiato const (in quanto non può fare side effect su
+     * di un oggetto di invocazione inesistente)
+     * @return
+     */
+    static Orario OraDiPranzo();
 
 private:
     int sec;
