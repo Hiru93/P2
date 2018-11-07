@@ -87,5 +87,19 @@ int main()
     /*Quanto scritto sopra indica il modo corretto per accedere ad un metodo statico di classe
      * ovvero antecedendo al nome del metodo quello della classe dentro la quale è stato definito
     */
+    cout << endl;
+    cout << endl;
+
+    Orario minore(13, 0, 30);
+    Orario maggiore(13, 0, 45);
+    cout << "stampa false: " << (minore == maggiore) << endl;
+    cout << "stampa true: " << (minore < maggiore) << endl;
+    cout << "stampa false: " << (minore > maggiore) << endl;
+
+    cout << endl;
+    cout << endl;
+
+    cout << "Overload dell'operatore di output: " << minore << endl;
+    cout << "Overload dell'operatore di output: " << maggiore << endl;
     return 0;
 }

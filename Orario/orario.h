@@ -1,6 +1,8 @@
 #ifndef ORARIO_H
 #define ORARIO_H
 
+#include <iostream>
+using namespace std;
 
 class Orario
 {
@@ -32,9 +34,33 @@ public:
      */
     /**
      * @brief operator + -- Overload dell'operatore di somma
-     * @return
+     * @return Orario
      */
     Orario operator+(Orario);
+
+    /**
+     * @brief operator - -- Overload dell'operatore di sottrazione
+     * @return Orario
+     */
+    Orario operator-(Orario);
+
+    /**
+     * @brief operator == -- Overload dell'operatore di uguaglianza
+     * @return boolean
+     */
+    bool operator==(Orario);
+
+    /**
+     * @brief operator > -- Overload dell'operatore maggiore
+     * @return boolean
+     */
+    bool operator>(Orario);
+
+    /**
+     * @brief operator < -- Overload dell'operatore minore
+     * @return boolean
+     */
+    bool operator<(Orario);
     /**
      * @brief Orario
      * Cosi facendo, ridefinisco il costruttore di default
@@ -86,5 +112,13 @@ public:
 private:
     int sec;
 };
+
+/**
+  Overload esterno alla classe di un operatore
+ */
+
+ostream& operator<<(ostream &os, const Orario &o) {
+    return os << o.Ore() << ":" << o.Minuti() << ":" << o.Secondi();
+}
 
 #endif // ORARIO_H

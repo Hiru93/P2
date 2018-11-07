@@ -51,3 +51,15 @@ Orario Orario::operator+(Orario o) {
     aux.sec = (sec + o.sec) % 86400;
     return aux;
 }
+
+Orario Orario::operator-(Orario o) {
+    Orario aux;
+    aux.sec = (sec - o.sec) % 86400;
+    return aux;
+}
+
+bool Orario::operator==(Orario o) { return sec == o.sec ? true : false; }
+
+bool Orario::operator<(Orario o) { return sec < o.sec ? true : false; }
+
+bool Orario::operator>(Orario o) { return sec > o.sec ? true : false; }
