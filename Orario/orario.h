@@ -116,9 +116,6 @@ private:
 /**
   Overload esterno alla classe di un operatore
  */
-
-ostream& operator<<(ostream &os, const Orario &o) {
-    return os << o.Ore() << ":" << o.Minuti() << ":" << o.Secondi();
-}
+ostream& operator<<(ostream& os, const Orario& o);
 
 #endif // ORARIO_H

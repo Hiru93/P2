@@ -1,5 +1,4 @@
 #include "orario.h"
-
 /**
  * @brief Orario::Orario -- Il costruttore, sebbene unico, funge da costruttore ad 1, 2 e 3 parametri
  * @param o -- Ore
@@ -63,3 +62,7 @@ bool Orario::operator==(Orario o) { return sec == o.sec ? true : false; }
 bool Orario::operator<(Orario o) { return sec < o.sec ? true : false; }
 
 bool Orario::operator>(Orario o) { return sec > o.sec ? true : false; }
+
+ostream& operator<<(ostream &os, const Orario &o) {
+    return os << o.Ore() << ":" << o.Minuti() << ":" << o.Secondi();
+}
